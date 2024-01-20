@@ -1,5 +1,6 @@
 import express = require('express');
 import { createMovie, getAllMovies, getMovieById, updateMovie, deleteMovie } from '../services/movie-service';
+import { validateJsonMiddleware, validateMovieBody } from '../middlewares/middleware';
 
 const moviesRouter = express.Router();
 moviesRouter.use(express.json());
@@ -27,7 +28,7 @@ moviesRouter.get('/:id', (req:any, res:any) => {
     };
 });
 
-moviesRouter.post('/', (req:any, res:any) => {
+moviesRouter.post('/', validateJsonMiddleware, validateMovieBody, (req:any, res:any) => {
     try{
         const newMovie = createMovie(req.body);
         res.status(200).send(newMovie);
@@ -36,7 +37,7 @@ moviesRouter.post('/', (req:any, res:any) => {
     }
 });
 
-moviesRouter.put('/:id', (req:any, res:any) => {
+moviesRouter.put('/:id', validateJsonMiddleware, validateMovieBody, (req:any, res:any) => {
     try {
         const movieToUpdate = req.body;
         const movieId = parseInt(req.params.id);
