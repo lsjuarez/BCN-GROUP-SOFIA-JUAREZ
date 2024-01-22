@@ -12,7 +12,7 @@ function getMovieById(id: number): Movie | undefined {
 
 function createMovie(movie: Movie): Movie {
     const isMovie = existsMovie(movie.name);
-    if(isMovie) throw new Error(`The movie with the name '${movie.name}' already exists)`);
+    if(isMovie) throw new Error(`The movie with the name '${movie.name}' already exists`);
 
     movie.id = movies.length + 1;;
     movies.push(movie);

@@ -1,4 +1,4 @@
-import express = require('express');
+const express = require('express');
 import { createMovie, getAllMovies, getMovieById, updateMovie, deleteMovie } from '../services/movie-service';
 import { validateJsonMiddleware, validateMovieBody } from '../middlewares/middleware';
 

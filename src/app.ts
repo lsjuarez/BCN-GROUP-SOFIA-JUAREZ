@@ -1,4 +1,4 @@
-import express = require('express');
+const express = require('express');
 import { moviesRouter } from './routes/moviesRoutes';
 
 const app = express();
